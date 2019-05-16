@@ -26,12 +26,14 @@
                     <div class="form-group">
                         <label for="category">Kategori</label>
                         <select class="form-control" name="category">
-                            @foreach($categories as $category)
-                            <option value="{{$category->id}}"
-                              {{old('category') == $category->id ? 'selected' : ''}}
-                              @if($category->id === $tour->category_id) selected @endif
-                              >{{$category->name}}</option>
-                            @endforeach
+                            <option value="Wisata Alam"
+                              {{old('category') == 'Wisata Alam' ? 'selected' : ''}}
+                              @if($tour->category === 'Wisata Alam') selected @endif
+                              >Wisata Alam</option>
+                              <option value="Wisata Buatan"
+                                {{old('category') == 'Wisata Buatan' ? 'selected' : ''}}
+                                @if($tour->category === 'Wisata Buatan') selected @endif
+                                >Wisata Buatan</option>
                         </select>
                     </div>
                     <div class="form-group">

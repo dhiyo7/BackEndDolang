@@ -8,7 +8,6 @@
     </div>
   </div>
 </div>
-{{--
 <div class="" id="list">
 </div>
 <br>
@@ -37,7 +36,7 @@
                   <img src="{{asset('images/'.$tour->image)}}" alt="image" height="150rem"/>
                   <figcaption>
                     <h4>{{$tour->title}}</h4>
-                    <p>{{$tour->category->name}}</p>
+                    <p>{{$tour->category}}</p>
                   </figcaption>
                 </figure>
                   <div class="text-center">
@@ -81,5 +80,4 @@
     </div>
   </div>
 </div>
---}}
 @endsection

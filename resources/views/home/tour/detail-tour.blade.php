@@ -5,7 +5,7 @@
         <img class="card-img-top" src="{{ asset('images/'.$tour->image) }}" height="700rem" alt="Card image cap">
         <div class="card-body">
             <h4 class="card-title">{{$tour->title}}</h4>
-            <h6 class="card-text">{{$tour->category->name}}</h6>
+            <h6 class="card-text">{{$tour->category}}</h6>
             <p class="card-description">{!!$tour->description!!}</p>
             <br>
             <a style="text-decoration:none" href="{{route('tour.edit',$tour)}}" class="btn btn-info">Edit</a>

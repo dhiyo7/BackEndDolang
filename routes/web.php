@@ -20,10 +20,10 @@ Route::group(['prefix' => '/'], function(){
   Route::get('pariwisata','Admin\TourController@index')->name('tour');
   Route::get('pariwisata/tambah','Admin\TourController@create')->name('tour.create');
   Route::post('pariwisata/tambah','Admin\TourController@store')->name('tour.store');
-  Route::get('pariwisata/edit/{tour}','TourController@edit')->name('tour.edit');
-  Route::patch('pariwisata/update/{tour}','TourController@update')->name('tour.update');
-  Route::post('pariwisata/delete/{tour}','TourController@destroy')->name('tour.destroy');
-  Route::get('pariwisata/detail/{tour}','TourController@show')->name('tour.detail');
+  Route::get('pariwisata/edit/{tour}','Admin\TourController@edit')->name('tour.edit');
+  Route::patch('pariwisata/update/{tour}','Admin\TourController@update')->name('tour.update');
+  Route::post('pariwisata/delete/{tour}','Admin\TourController@destroy')->name('tour.destroy');
+  Route::get('pariwisata/detail/{tour}','Admin\TourController@show')->name('tour.detail');
 
 });
 
