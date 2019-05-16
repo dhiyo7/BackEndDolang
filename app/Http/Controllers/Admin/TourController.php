@@ -76,7 +76,7 @@ class TourController extends Controller
       }else{
         $tour->update([
         'title' => $request->title,
-        'category_id' => $request->category,
+        'category' => $request->category,
         'description' => $request->description,
       ]);
       }
