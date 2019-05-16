@@ -24,6 +24,7 @@ Route::group(['prefix' => '/'], function(){
   Route::patch('pariwisata/update/{tour}','Admin\TourController@update')->name('tour.update');
   Route::post('pariwisata/delete/{tour}','Admin\TourController@destroy')->name('tour.destroy');
   Route::get('pariwisata/detail/{tour}','Admin\TourController@show')->name('tour.detail');
+  Route::get('pengguna','Admin\UserController@index')->name('user');
 
 });
 

@@ -7,7 +7,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a style="text-decoration:none" class="nav-link" href="">
+      <a style="text-decoration:none" class="nav-link" href="{{route('user')}}">
         <i class="mdi mdi-account menu-icon"></i>
         <span class="menu-title">Pengguna</span>
       </a>
