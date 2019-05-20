@@ -27,16 +27,19 @@ class TourController extends Controller
     {
       $this->validate($request,[
         'title' => 'required|min:5',
-        'description' => 'required|min:10',
+        'description' => 'required|min:50',
         'image' => 'required|mimes:jpeg,png,jpeg',
+        'panorama' => 'required|mimes:jpeg,png,jpeg',
       ]);
       $image = $request->file('image')->store('pictures');
+      $panorama = $request->file('panorama')->store('panorama');
 
       Tour::create([
         'title' => $request->title,
         'category' => $request->category,
         'description' => $request->description,
         'image' => $image,
+        'panorama' => $panorama,
       ]);
 
       return redirect()->route('tour')->with('success','Wisata berhasil ditambahkan');
@@ -59,19 +62,46 @@ class TourController extends Controller
         'title' => 'required|min:5',
         'description' => 'required|min:50',
         'image' => 'mimes:jpeg,png,jpeg',
+        'panorama' => 'mimes:jpeg,png,jpeg',
       ]);
-
       if ($request->image) {
         $image_path = $tour->image;
         if (Storage::exists($image_path)) {
           Storage::delete($image_path);
         }
         $image = $request->file('image')->store('pictures');
+        if ($request->panorama) {
+          $panorama_path = $tour->panorama;
+          if (Storage::exists($panorama_path)) {
+            Storage::delete($panorama_path);
+          }
+          $panorama = $request->file('panorama')->store('panorama');
+            $tour->update([
+            'title' => $request->title,
+            'category' => $request->category,
+            'description' => $request->description,
+            'panorama' => $panorama,
+            'image' => $image,
+          ]);
+        }else{
           $tour->update([
           'title' => $request->title,
           'category' => $request->category,
           'description' => $request->description,
           'image' => $image,
+        ]);
+      }
+      }elseif ($request->panorama) {
+        $panorama_path = $tour->panorama;
+        if (Storage::exists($panorama_path)) {
+          Storage::delete($panorama_path);
+        }
+        $panorama = $request->file('panorama')->store('panorama');
+          $tour->update([
+          'title' => $request->title,
+          'category' => $request->category,
+          'description' => $request->description,
+          'panorama' => $panorama,
         ]);
       }else{
         $tour->update([
@@ -88,6 +118,10 @@ class TourController extends Controller
       $image_path = $tour->image;
       if (Storage::exists($image_path)) {
           Storage::delete($image_path);
+      }
+      $panorama_path = $tour->panorama;
+      if (Storage::exists($panorama_path)) {
+          Storage::delete($panorama_path);
       }
       $tour->delete();
       return redirect()->route('tour')->with('success','Wisata berhasil dihapus');

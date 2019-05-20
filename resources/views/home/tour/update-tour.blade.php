@@ -66,6 +66,27 @@
                         @endif
                       </div>
                     </div>
+                    <div class="d-flex justify-content-start align-items-start mb-3">
+                        <div class="col-4 form-group">
+                            <img src="{{ asset('images/'.$tour->panorama) }}" alt="sample" class="rounded mw-100"/>
+                            <p class="text-info mt-3">Panorama sebelumnya</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Panorama</label>
+                      <input type="file" name="panorama" class="file-upload-default">
+                      <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                        @if ($errors->has('panorama'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>File panorama harus JPG,PNG,JPEG</strong>
+                        </span>
+                        @endif
+                      </div>
+                    </div>
                     <button type="submit" class="btn btn-primary mr-2">Simpan</button>
                     <a style="text-decoration:none" href="{{route('tour')}}" class="btn btn-secondary">Kembali</a>
                 </form>

@@ -19,6 +19,7 @@ class CreateToursTable extends Migration
           $table->string('category');
           $table->longtext('description');
           $table->string('image');
+          $table->string('panorama');
           $table->string('longitude')->nullable();
           $table->string('latitude')->nullable();
           $table->timestamps();
