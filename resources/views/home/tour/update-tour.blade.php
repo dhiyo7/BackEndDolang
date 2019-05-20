@@ -24,6 +24,54 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label for="title">Alamat</label>
+                        <textarea name="address" rows="8" cols="80" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" placeholder="Masukan Alamat" required>{{old('address',$tour->address)}}</textarea>
+                        @if ($errors->has('address'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>Alamat terlalu pendek</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                      <label for="category">Kecamatan</label>
+                      <input type="text" name="region" value="{{old('region',$tour->region)}}" list="region" class="form-control{{ $errors->has('region') ? ' is-invalid' : '' }}" placeholder="Masukan Kecamatan" />
+                      <datalist id="region">
+                        <option value="Ampelgading">
+                        <option value="Bantarbolang">
+                        <option value="Belik">
+                        <option value="Bodeh">
+                        <option value="Comal">
+                        <option value="Moga">
+                        <option value="Pemalang">
+                        <option value="Petarukan">
+                        <option value="Pulosari">
+                        <option value="Randudongkal">
+                        <option value="Taman">
+                        <option value="Ulujami">
+                        <option value="Warungpring">
+                        <option value="Watukumpul">
+                      </datalist>
+                      @if ($errors->has('region'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>Kecamatan yang anda masukan salah</strong>
+                          </span>
+                      @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="category">HTM</label>
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text text-dark">Rp.</div>
+                        </div>
+                        <input type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" value="{{old('price',substr($tour->price,4))}}" name="price" id="price" placeholder="Masukan Biaya" required>
+                        @if ($errors->has('price'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>HTM minimal 5000</strong>
+                            </span>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group">
                         <label for="category">Kategori</label>
                         <select class="form-control" name="category">
                             <option value="Wisata Alam"

@@ -27,6 +27,10 @@ class TourController extends Controller
     {
       $this->validate($request,[
         'title' => 'required|min:5',
+        'address' => 'required|min:10',
+        'region' => 'required|in:Ampelgading,Bantarbolang,Belik,Bodeh,Comal,
+        Moga,Pemalang,Petarukan,Pulosari,Randudongkal,Taman,Ulujami,Warungpring,Watukumpul',
+        'price' => 'required|min:2',
         'description' => 'required|min:50',
         'image' => 'required|mimes:jpeg,png,jpeg',
         'panorama' => 'required|mimes:jpeg,png,jpeg',
@@ -36,7 +40,10 @@ class TourController extends Controller
 
       Tour::create([
         'title' => $request->title,
+        'address' => $request->address,
+        'region' => $request->region,
         'category' => $request->category,
+        'price' => 'Rp. '.$request->price,
         'description' => $request->description,
         'image' => $image,
         'panorama' => $panorama,
@@ -60,6 +67,10 @@ class TourController extends Controller
     {
       $this->validate($request,[
         'title' => 'required|min:5',
+        'address' => 'required|min:10',
+        'region' => 'required|in:Ampelgading,Bantarbolang,Belik,Bodeh,Comal,
+        Moga,Pemalang,Petarukan,Pulosari,Randudongkal,Taman,Ulujami,Warungpring,Watukumpul',
+        'price' => 'required|min:2',
         'description' => 'required|min:50',
         'image' => 'mimes:jpeg,png,jpeg',
         'panorama' => 'mimes:jpeg,png,jpeg',
@@ -77,18 +88,24 @@ class TourController extends Controller
           }
           $panorama = $request->file('panorama')->store('panorama');
             $tour->update([
-            'title' => $request->title,
-            'category' => $request->category,
-            'description' => $request->description,
-            'panorama' => $panorama,
-            'image' => $image,
+              'title' => $request->title,
+              'address' => $request->address,
+              'region' => $request->region,
+              'category' => $request->category,
+              'price' => 'Rp. '.$request->price,
+              'description' => $request->description,
+              'image' => $image,
+              'panorama' => $panorama,
           ]);
         }else{
           $tour->update([
-          'title' => $request->title,
-          'category' => $request->category,
-          'description' => $request->description,
-          'image' => $image,
+            'title' => $request->title,
+            'address' => $request->address,
+            'region' => $request->region,
+            'category' => $request->category,
+            'price' => 'Rp. '.$request->price,
+            'description' => $request->description,
+            'image' => $image,
         ]);
       }
       }elseif ($request->panorama) {
@@ -99,14 +116,20 @@ class TourController extends Controller
         $panorama = $request->file('panorama')->store('panorama');
           $tour->update([
           'title' => $request->title,
+          'address' => $request->address,
+          'region' => $request->region,
           'category' => $request->category,
+          'price' => 'Rp. '.$request->price,
           'description' => $request->description,
           'panorama' => $panorama,
         ]);
       }else{
         $tour->update([
         'title' => $request->title,
+        'address' => $request->address,
+        'region' => $request->region,
         'category' => $request->category,
+        'price' => 'Rp. '.$request->price,
         'description' => $request->description,
       ]);
       }
