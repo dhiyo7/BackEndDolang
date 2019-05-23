@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/tour','User\TourController@index');
-Route::get('/tour/{tour}','User\TourController@show');
-Route::get('/category/{category}','User\TourController@category');
+Route::get('/tour','API\TourController@index');
+Route::get('/tour/{tour}','API\TourController@show');
+Route::get('/category/{category}','API\TourController@category');
