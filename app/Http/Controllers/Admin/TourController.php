@@ -67,8 +67,7 @@ class TourController extends Controller
       $this->validate($request,[
         'title' => 'required|min:5',
         'address' => 'required|min:10',
-        'region' => 'required|in:Ampelgading,Bantarbolang,Belik,Bodeh,Comal,
-        Moga,Pemalang,Petarukan,Pulosari,Randudongkal,Taman,Ulujami,Warungpring,Watukumpul',
+        'region' => 'required|in:Ampelgading,Bantarbolang,Belik,Bodeh,Comal,Moga,Pemalang,Petarukan,Pulosari,Randudongkal,Taman,Ulujami,Warungpring,Watukumpul',
         'price' => 'required|min:2',
         'description' => 'required|min:50',
         'image' => 'mimes:jpeg,png,jpeg',
