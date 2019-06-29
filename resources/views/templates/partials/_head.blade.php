@@ -15,4 +15,10 @@
   <link rel="stylesheet" href="{{ asset('asset/css/vertical-layout-light/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('asset/images/bengkulu-mini.png')}}" />
-</head>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:5; bottom:5; width:70%; height:50%}
+    </style>
+    </head>

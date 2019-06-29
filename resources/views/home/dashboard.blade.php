@@ -26,8 +26,6 @@
     </div>
   </div> -->
 </div>
-<div style="width: 1200px; height: 700px;">
-{!! Mapper::render() !!}
-</div>
+<div id='map'></div>
 
 @endsection

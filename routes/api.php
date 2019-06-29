@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::get('/tour','API\TourController@index');
 Route::get('/tour/{tour}','API\TourController@show');
 Route::get('/category/{category}','API\TourController@category');
+Route::post('/user/register','API\UserController@register');
+Route::post('/user/login','API\UserController@login');
+Route::post('/user/comment','API\UserController@comment')->middleware('auth:api');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tour;
+use App\Comment;
+use DB;
 
 class TourController extends Controller
 {
@@ -22,10 +24,27 @@ class TourController extends Controller
     }
 
     public function show(Tour $tour){
+      $comment = DB::table('comments')
+            ->join('users','users.id','=','comments.user_id')
+            ->select('users.name as name','comments.message')
+            ->where('comments.tour_id',$tour->id)
+            ->get();
       return response()->json([
         'status' => true,
         'message' => 'Berhasil',
-        'data' => $tour
+        'data' => [
+          'id' => $tour->id,
+          'title' => $tour->title,
+          'address' => $tour->category,
+          'region' => $tour->region,
+          'price' => $tour->price,
+          'description' => $tour->description,
+          'image' => $tour->image,
+          'panorama' => $tour->panorama,
+          'longitude' => $tour->longitude,
+          'latitude' => $tour->latitude,
+          'comment' => $comment
+        ]
       ], 200);
     }
 
