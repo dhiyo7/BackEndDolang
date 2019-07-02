@@ -52,43 +52,40 @@ rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
 return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
 }
 </script>
-<script src='https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js'></script>
-<script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
-<!-- <script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoicm95aGFuMzEiLCJhIjoiY2p2czh2ZW5rMng3NTN5cGJyZHVpMzBjbiJ9.YCydz7uTwLHtDvO7S7Dx_w';
-// eslint-disable-next-line no-undef
-var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
-mapboxClient.geocoding.forwardGeocode({
-query: 'Pemalang',
-autocomplete: false,
-limit: 1
-})
-.send()
-.then(function (response) {
-if (response && response.body && response.body.features && response.body.features.length) {
-var feature = response.body.features[0];
+<script>
 
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11',
-center: [109.425911,-7.059942],
-zoom: 9
-});
-new mapboxgl.Marker()
-.setLngLat([109.378820,-6.874760])
-.addTo(map);
-}
-});
+	var mymap = L.map('map').setView([-6.894006,109.377652], 13);
+
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox.streets'
+	}).addTo(mymap);
+  var tour = L.layerGroup();
+	L.marker([-6.894006,109.377652]).addTo(mymap)
+		.bindPopup("<b>Pemalang</b><br />Kota Pemalang.").addTo(tour);
+  L.marker([-6.874760,109.378822]).addTo(mymap)
+  	.bindPopup("<b>Widuri</b><br />Widuri Waterpark.").addTo(tour);
+
+	//var popup = L.popup();
+
+	// function onMapClick(e) {
+	// 	popup
+	// 		.setLatLng(e.latlng)
+	// 		.setContent("You clicked the map at " + e.latlng.toString())
+	// 		.openOn(mymap);
+	// }
+
+	mymap.on('click', onMapClick);
+
+</script>
+<!-- <script>
+	var map = L.map('map').setView([-6.894006,109.377652], 13);
+
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
 
 </script> -->
-<script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4pm6mjcUdItJgyo8QQe-7UxxfJgxTkeA&callback=initMap"
-    async defer></script>
