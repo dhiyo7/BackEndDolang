@@ -85,15 +85,15 @@
                             <option value="Kolam Renang"
                               {{old('category') == 'Kolam Renang' ? 'selected' : ''}}
                               @if($tour->category === 'Kolam Renang') selected @endif
-                              >Bukit</option>
+                              >Kolam Renang</option>
                             <option value="Pantai"
                               {{old('category') == 'Pantai' ? 'selected' : ''}}
                               @if($tour->category === 'Pantai') selected @endif
-                              >Bukit</option>
+                              >Pantai</option>
                             <option value="Taman"
                               {{old('category') == 'Taman' ? 'selected' : ''}}
                               @if($tour->category === 'Taman') selected @endif
-                              >Bukit</option>
+                              >Taman</option>
                         </select>
                     </div>
                     <div class="form-group">
