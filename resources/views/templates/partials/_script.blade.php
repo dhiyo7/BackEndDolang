@@ -54,7 +54,7 @@ return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
 </script>
 <script src='https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js'></script>
 <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
-<script>
+<!-- <script>
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm95aGFuMzEiLCJhIjoiY2p2czh2ZW5rMng3NTN5cGJyZHVpMzBjbiJ9.YCydz7uTwLHtDvO7S7Dx_w';
 // eslint-disable-next-line no-undef
 var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
@@ -74,10 +74,20 @@ style: 'mapbox://styles/mapbox/streets-v11',
 center: [109.425911,-7.059942],
 zoom: 9
 });
-// new mapboxgl.Marker()
-// .setLngLat([108.902679,-6.959179])
-// .addTo(map);
+new mapboxgl.Marker()
+.setLngLat([109.378820,-6.874760])
+.addTo(map);
 }
 });
 
+</script> -->
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoicm95aGFuMzEiLCJhIjoiY2p2czh2ZW5rMng3NTN5cGJyZHVpMzBjbiJ9.YCydz7uTwLHtDvO7S7Dx_w';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v11',
+zoom: 13,
+center: [109.425911,-7.059942],
+zoom: 9
+});
 </script>

@@ -52,7 +52,7 @@ class TourController extends Controller
       $tour = Tour::where('category',$category)->get();
       if ($tour->isEmpty()) {
         return response()->json([
-          'status' => false,
+          'status' => true,
           'message' => 'Not Found',
         ], 404);
       }
