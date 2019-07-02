@@ -74,14 +74,26 @@
                     <div class="form-group">
                         <label for="category">Kategori</label>
                         <select class="form-control" name="category">
-                            <option value="Wisata Alam"
-                              {{old('category') == 'Wisata Alam' ? 'selected' : ''}}
-                              @if($tour->category === 'Wisata Alam') selected @endif
-                              >Wisata Alam</option>
-                              <option value="Wisata Buatan"
-                                {{old('category') == 'Wisata Buatan' ? 'selected' : ''}}
-                                @if($tour->category === 'Wisata Buatan') selected @endif
-                                >Wisata Buatan</option>
+                            <option value="Bukit"
+                              {{old('category') == 'Bukit' ? 'selected' : ''}}
+                              @if($tour->category === 'Bukit') selected @endif
+                              >Bukit</option>
+                            <option value="Curug"
+                              {{old('category') == 'Curug' ? 'selected' : ''}}
+                              @if($tour->category === 'Curug') selected @endif
+                              >Curug</option>
+                            <option value="Kolam Renang"
+                              {{old('category') == 'Kolam Renang' ? 'selected' : ''}}
+                              @if($tour->category === 'Kolam Renang') selected @endif
+                              >Bukit</option>
+                            <option value="Pantai"
+                              {{old('category') == 'Pantai' ? 'selected' : ''}}
+                              @if($tour->category === 'Pantai') selected @endif
+                              >Bukit</option>
+                            <option value="Taman"
+                              {{old('category') == 'Taman' ? 'selected' : ''}}
+                              @if($tour->category === 'Taman') selected @endif
+                              >Bukit</option>
                         </select>
                     </div>
                     <div class="form-group">

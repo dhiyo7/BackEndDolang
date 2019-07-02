@@ -73,8 +73,11 @@
                     <div class="form-group">
                         <label for="category">Kategori</label>
                         <select class="form-control" name="category">
-                            <option value="Wisata Alam" {{old('category') == 'Wisata Alam' ? 'selected' : ''}}>Wisata Alam</option>
-                            <option value="Wisata Buatan" {{old('category') == 'Wisata Buatan' ? 'selected' : ''}}>Wisata Buatan</option>
+                          <option value="Bukit" {{old('category') == 'Bukit' ? 'selected' : ''}}>Bukit</option>
+                          <option value="Curug" {{old('category') == 'Curug' ? 'selected' : ''}}>Curug</option>
+                          <option value="Kolam Renang" {{old('category') == 'Kolam Renang' ? 'selected' : ''}}>Kolam Renang</option>
+                          <option value="Pantai" {{old('category') == 'Pantai' ? 'selected' : ''}}>Pantai</option>
+                          <option value="Taman" {{old('category') == 'Taman' ? 'selected' : ''}}>Taman</option>
                         </select>
                     </div>
                     <div class="form-group">
