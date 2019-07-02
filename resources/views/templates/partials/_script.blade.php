@@ -82,12 +82,13 @@ new mapboxgl.Marker()
 
 </script> -->
 <script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoicm95aGFuMzEiLCJhIjoiY2p2czh2ZW5rMng3NTN5cGJyZHVpMzBjbiJ9.YCydz7uTwLHtDvO7S7Dx_w';
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11',
-zoom: 13,
-center: [109.425911,-7.059942],
-zoom: 9
-});
-</script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4pm6mjcUdItJgyo8QQe-7UxxfJgxTkeA&callback=initMap"
+    async defer></script>

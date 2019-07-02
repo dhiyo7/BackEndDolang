@@ -24,9 +24,10 @@ class TourController extends Controller
     }
 
     public function show(Tour $tour){
-      $comment = DB::table('comments')
+
+      $comments = DB::table('comments')
             ->join('users','users.id','=','comments.user_id')
-            ->select('users.name as name','comments.message')
+            ->select('users.name as name','comments.message','comments.created_at')
             ->where('comments.tour_id',$tour->id)
             ->get();
       return response()->json([
@@ -43,7 +44,7 @@ class TourController extends Controller
           'panorama' => $tour->panorama,
           'longitude' => $tour->longitude,
           'latitude' => $tour->latitude,
-          'comment' => $comment
+          'comment' => $comments
         ]
       ], 200);
     }

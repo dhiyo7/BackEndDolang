@@ -1,7 +1,7 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="initial-scale=1.0">
   <title>Dolang - @if(Request::is('/')) Login @else Admin @endif</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('asset/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css')}}">
