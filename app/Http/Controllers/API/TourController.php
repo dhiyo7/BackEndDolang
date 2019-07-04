@@ -17,8 +17,8 @@ class TourController extends Controller
     public function index(){
       $tours = Tour::all();
       return response()->json([
-        'status' => true,
         'message' => 'Berhasil',
+        'status' => true,
         'data' => $tours
       ], 200);
     }
@@ -31,8 +31,8 @@ class TourController extends Controller
             ->where('comments.tour_id',$tour->id)
             ->get();
       return response()->json([
-        'status' => true,
         'message' => 'Berhasil',
+        'status' => true,
         'data' => [
           'id' => $tour->id,
           'title' => $tour->title,
