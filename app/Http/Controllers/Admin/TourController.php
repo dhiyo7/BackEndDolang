@@ -25,6 +25,7 @@ class TourController extends Controller
 
     public function store(Request $request)
     {
+      //dd($request->all());
       $this->validate($request,[
         'title' => 'required|min:5',
         'address' => 'required|min:10',
@@ -32,10 +33,15 @@ class TourController extends Controller
         'price' => 'required|min:2',
         'description' => 'required|min:50',
         'image' => 'required|mimes:jpeg,png,jpeg',
-        'panorama' => 'required|mimes:jpeg,png,jpeg',
+        'panorama1' => 'required|mimes:jpeg,png,jpeg',
+        'panorama2' => 'required|mimes:jpeg,png,jpeg',
+        'panorama3' => 'required|mimes:jpeg,png,jpeg',
       ]);
+
       $image = $request->file('image')->store('pictures');
-      $panorama = $request->file('panorama')->store('panorama');
+      $panorama1 = $request->file('panorama1')->store('panorama');
+      $panorama2 = $request->file('panorama2')->store('panorama');
+      $panorama3 = $request->file('panorama3')->store('panorama');
 
       Tour::create([
         'title' => $request->title,
@@ -45,7 +51,11 @@ class TourController extends Controller
         'price' => 'Rp. '.$request->price,
         'description' => $request->description,
         'image' => $image,
-        'panorama' => $panorama,
+        'panorama1' => $panorama1,
+        'panorama2' => $panorama2,
+        'panorama3' => $panorama3,
+        'longitude' => $request->longitude,
+        'latitude' => $request->latitude
       ]);
 
       return redirect()->route('tour')->with('success','Wisata berhasil ditambahkan');
@@ -140,9 +150,17 @@ class TourController extends Controller
       if (Storage::exists($image_path)) {
           Storage::delete($image_path);
       }
-      $panorama_path = $tour->panorama;
-      if (Storage::exists($panorama_path)) {
-          Storage::delete($panorama_path);
+      $panorama_path1 = $tour->panorama1;
+      if (Storage::exists($panorama_path1)) {
+          Storage::delete($panorama_path1);
+      }
+      $panorama_path2 = $tour->panorama2;
+      if (Storage::exists($panorama_path2)) {
+          Storage::delete($panorama_path2);
+      }
+      $panorama_path3 = $tour->panorama3;
+      if (Storage::exists($panorama_path3)) {
+          Storage::delete($panorama_path3);
       }
       $tour->delete();
       return redirect()->route('tour')->with('success','Wisata berhasil dihapus');

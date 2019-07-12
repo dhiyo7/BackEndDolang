@@ -18,4 +18,5 @@ Route::get('/tour/{tour}','API\TourController@show');
 Route::get('/category/{category}','API\TourController@category');
 Route::post('/user/register','API\UserController@register');
 Route::post('/user/login','API\UserController@login');
+Route::post('tour/search','API\TourController@search');
 Route::post('/user/comment','API\UserController@comment')->middleware('auth:api');

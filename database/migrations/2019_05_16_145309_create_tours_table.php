@@ -22,9 +22,11 @@ class CreateToursTable extends Migration
           $table->string('price');
           $table->longtext('description');
           $table->string('image');
-          $table->string('panorama');
-          $table->string('longitude')->nullable();
-          $table->string('latitude')->nullable();
+          $table->string('panorama1');
+          $table->string('panorama2');
+          $table->string('panorama3');
+          $table->string('longitude');
+          $table->string('latitude');
           $table->timestamps();
         });
     }

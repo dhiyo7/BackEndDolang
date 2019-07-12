@@ -104,23 +104,66 @@
                         @endif
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label>Panorama</label>
-                      <input type="file" name="panorama" class="file-upload-default">
+                    <div class="row">
+                    <div class="form-group col-4">
+                      <label>Panorama 1</label>
+                      <input type="file" name="panorama1" class="file-upload-default">
                       <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
+                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama1') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                         </span>
-                        @if ($errors->has('panorama'))
+                        @if ($errors->has('panorama1'))
                         <span class="invalid-feedback" role="alert">
                             <strong>File panorama harus JPG,PNG,JPEG</strong>
                         </span>
                         @endif
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2">Simpan</button>
+                    <div class="form-group col-4">
+                      <label>Panorama 2</label>
+                      <input type="file" name="panorama2" class="file-upload-default">
+                      <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama2') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                        @if ($errors->has('panorama2'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>File panorama harus JPG,PNG,JPEG</strong>
+                        </span>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group col-4">
+                      <label>Panorama 3</label>
+                      <input type="file" name="panorama3" class="file-upload-default">
+                      <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama3') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                        @if ($errors->has('panorama3'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>File panorama harus JPG,PNG,JPEG</strong>
+                        </span>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="title">Longitude</label>
+                        <input type="text" id="long" name="longitude" class="form-control" value="{{ old('longitude') }}" placeholder="Longitude" required>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="title">Latitude</label>
+                        <input type="text" id="lat" name="latitude" class="form-control" value="{{ old('latitude') }}" placeholder="Latitude" required>
+                    </div>
+                    <div class="form-group col-12">
+                      <div id="map2" style="width: 1025px; height: 500px"></div>
+                    </div>
+                      </div>
                     <a style="text-decoration:none" href="{{route('tour')}}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-primary mr-2">Simpan</button>
                 </form>
             </div>
         </div>

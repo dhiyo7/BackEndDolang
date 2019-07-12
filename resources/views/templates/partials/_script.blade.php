@@ -11,9 +11,9 @@
 <script src="{{ asset('asset/js/settings.js')}}"></script>
 <script src="{{ asset('asset/js/todolist.js')}}"></script>
 <script src="{{ asset('asset/vendors/tinymce/tinymce.min.js')}}"></script>
-  <script src="{{ asset('asset/vendors/tinymce/themes/modern/theme.js')}}"></script>
-  <script src="{{ asset('asset/vendors/summernote/dist/summernote-bs4.min.js')}}"></script>
-    <script src="{{ asset('asset/js/editorDemo.js')}}"></script>
+<script src="{{ asset('asset/vendors/tinymce/themes/modern/theme.js')}}"></script>
+<script src="{{ asset('asset/vendors/summernote/dist/summernote-bs4.min.js')}}"></script>
+<script src="{{ asset('asset/js/editorDemo.js')}}"></script>
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="{{asset('asset/js/data-table.js')}}"></script>
@@ -52,40 +52,7 @@ rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
 return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
 }
 </script>
-<script>
-
-	var mymap = L.map('map').setView([-6.894006,109.377652], 13);
-
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox.streets'
-	}).addTo(mymap);
-  var tour = L.layerGroup();
-	L.marker([-6.894006,109.377652]).addTo(mymap)
-		.bindPopup("<b>Pemalang</b><br />Kota Pemalang.").addTo(tour);
-  L.marker([-6.874760,109.378822]).addTo(mymap)
-  	.bindPopup("<b>Widuri</b><br />Widuri Waterpark.").addTo(tour);
-
-	//var popup = L.popup();
-
-	// function onMapClick(e) {
-	// 	popup
-	// 		.setLatLng(e.latlng)
-	// 		.setContent("You clicked the map at " + e.latlng.toString())
-	// 		.openOn(mymap);
-	// }
-
-	mymap.on('click', onMapClick);
-
-</script>
-<!-- <script>
-	var map = L.map('map').setView([-6.894006,109.377652], 13);
-
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-	}).addTo(map);
-
-</script> -->
+@if(Request::is('beranda'))
+  @include('templates.partials._mapDashboard')
+@endif
+  @include('templates.partials._mapCreate')
