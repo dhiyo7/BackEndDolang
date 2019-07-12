@@ -13,7 +13,7 @@
                 <h4 class="card-title">Form edit wisata</h4>
                 <form class="forms-sample" action="{{route('tour.update', $tour)}}" method="post" enctype="multipart/form-data">
                   @csrf
-              {{ method_field('PATCH') }}
+                  @method('PATCH')
                     <div class="form-group">
                         <label for="title">Judul</label>
                         <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{old('title',$tour->title)}}" placeholder="Masukan Judul">
@@ -111,7 +111,7 @@
                             <p class="text-info mt-3">Gambar sebelumnya</p>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-6">
                       <label>Gambar</label>
                       <input type="file" name="image" class="file-upload-default">
                       <div class="input-group col-xs-12">
@@ -126,29 +126,78 @@
                         @endif
                       </div>
                     </div>
-                    <div class="d-flex justify-content-start align-items-start mb-3">
-                        <div class="col-4 form-group">
-                            <img src="{{ asset('images/'.$tour->panorama) }}" alt="sample" class="rounded mw-100"/>
-                            <p class="text-info mt-3">Panorama sebelumnya</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                      <label>Panorama</label>
-                      <input type="file" name="panorama" class="file-upload-default">
+                    <div class="row">
+                      <div class="col-4 form-group">
+                          <img src="{{ asset('images/'.$tour->panorama1) }}" width="500px" height="200px" alt="sample" class="rounded mw-100"/>
+                          <p class="text-info mt-3">Panorama 1 sebelumnya</p>
+                      </div>
+                      <div class="col-4 form-group">
+                          <img src="{{ asset('images/'.$tour->panorama2) }}" width="500px" height="200px" alt="sample" class="rounded mw-100"/>
+                          <p class="text-info mt-3">Panorama 2 sebelumnya</p>
+                      </div>
+                      <div class="col-4 form-group">
+                          <img src="{{ asset('images/'.$tour->panorama3) }}" width="500px" height="200px" alt="sample" class="rounded mw-100"/>
+                          <p class="text-info mt-3">Panorama 3 sebelumnya</p>
+                      </div>
+                    <div class="form-group col-4">
+                      <label>Panorama 1</label>
+                      <input type="file" name="panorama1" class="file-upload-default">
                       <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
+                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama1') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                         </span>
-                        @if ($errors->has('panorama'))
+                        @if ($errors->has('panorama1'))
                         <span class="invalid-feedback" role="alert">
                             <strong>File panorama harus JPG,PNG,JPEG</strong>
                         </span>
                         @endif
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2">Simpan</button>
+                    <div class="form-group col-4">
+                      <label>Panorama 2</label>
+                      <input type="file" name="panorama2" class="file-upload-default">
+                      <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama2') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                        @if ($errors->has('panorama2'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>File panorama harus JPG,PNG,JPEG</strong>
+                        </span>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group col-4">
+                      <label>Panorama 3</label>
+                      <input type="file" name="panorama3" class="file-upload-default">
+                      <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama3') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                        @if ($errors->has('panorama3'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>File panorama harus JPG,PNG,JPEG</strong>
+                        </span>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="title">Longitude</label>
+                        <input type="text" id="long" name="longitude" class="form-control" value="{{ old('longitude', $tour->longitude) }}" placeholder="Longitude" required>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="title">Latitude</label>
+                        <input type="text" id="lat" name="latitude" class="form-control" value="{{ old('latitude', $tour->latitude) }}" placeholder="Latitude" required>
+                    </div>
+                    <div class="form-group col-12">
+                      <div id="map3" style="width: 1025px; height: 500px"></div>
+                    </div>
+                    </div>
                     <a style="text-decoration:none" href="{{route('tour')}}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-primary mr-2">Simpan</button>
                 </form>
             </div>
         </div>

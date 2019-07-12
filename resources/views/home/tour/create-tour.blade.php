@@ -89,7 +89,7 @@
                             </span>
                         @endif
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-6">
                       <label>Gambar</label>
                       <input type="file" name="image" class="file-upload-default">
                       <div class="input-group col-xs-12">
@@ -161,7 +161,7 @@
                     <div class="form-group col-12">
                       <div id="map2" style="width: 1025px; height: 500px"></div>
                     </div>
-                      </div>
+                    </div>
                     <a style="text-decoration:none" href="{{route('tour')}}" class="btn btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-primary mr-2">Simpan</button>
                 </form>

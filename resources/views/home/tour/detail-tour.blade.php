@@ -3,14 +3,34 @@
 @section('content')
     <div class="card">
         <img class="card-img-top" src="{{ asset('images/'.$tour->image) }}" height="700rem" alt="Card image cap">
+        </div>
         <div class="card-body">
+          <div class="mb-3 mr-2">
+            <div class="row">
+              <div class="col-4 form-group">
+                  <img src="{{ asset('images/'.$tour->panorama1) }}" width="500px" height="200px" alt="sample" class="rounded mw-100"/>
+                  <p class="text-info mt-3">Panorama 1</p>
+              </div>
+              <div class="col-4 form-group">
+                  <img src="{{ asset('images/'.$tour->panorama2) }}" width="500px" height="200px" alt="sample" class="rounded mw-100"/>
+                  <p class="text-info mt-3">Panorama 2</p>
+              </div>
+              <div class="col-4 form-group">
+                  <img src="{{ asset('images/'.$tour->panorama3) }}" width="500px" height="200px" alt="sample" class="rounded mw-100"/>
+                  <p class="text-info mt-3">Panorama 3</p>
+              </div>
+            </div>
             <h4 class="card-title">{{$tour->title}}</h4>
             <h6 class="card-text">{{$tour->category}}</h6>
+            <h6 class="card-text">{{$tour->region}}, {{$tour->address}}</h6>
+            <h6 class="card-text">{{$tour->price}}</h6>
             <p class="card-description">{!!$tour->description!!}</p>
-            <br>
-            <a style="text-decoration:none" href="{{route('tour.edit',$tour)}}" class="btn btn-info">Edit</a>
-            <button class="btn btn-danger" data-target="#hapus{{$tour->id}}" data-toggle="modal">Hapus</button>
-            <a style="text-decoration:none" href="{{route('tour')}}" class="btn btn-secondary">Kembali</a>
+            <div class="mt-4">
+              <div id="map4" style="width: 1060px; height: 500px;"></div>
+            </div>
+            <a style="text-decoration:none" href="{{route('tour.edit',$tour)}}" class="btn btn-info mt-5">Edit</a>
+            <button class="btn btn-danger mt-5" data-target="#hapus{{$tour->id}}" data-toggle="modal">Hapus</button>
+            <a style="text-decoration:none" href="{{route('tour')}}" class="btn btn-secondary mt-5">Kembali</a>
         </div>
     </div>
     <!-- modal hapus -->

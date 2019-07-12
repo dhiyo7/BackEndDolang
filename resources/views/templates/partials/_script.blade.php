@@ -54,5 +54,9 @@ return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
 </script>
 @if(Request::is('beranda'))
   @include('templates.partials._mapDashboard')
+@elseif(Request::is('pariwisata/edit/*'))
+  @include('templates.partials._mapEdit')
+@elseif(Request::is('pariwisata/detail/*'))
+    @include('templates.partials._mapShow')
 @endif
   @include('templates.partials._mapCreate')
