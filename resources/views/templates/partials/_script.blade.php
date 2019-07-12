@@ -58,5 +58,6 @@ return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
   @include('templates.partials._mapEdit')
 @elseif(Request::is('pariwisata/detail/*'))
     @include('templates.partials._mapShow')
-@endif
+@elseif(Request::is('pariwisata/tambah'))
   @include('templates.partials._mapCreate')
+@endif

@@ -25,6 +25,7 @@
             <h6 class="card-text">{{$tour->region}}, {{$tour->address}}</h6>
             <h6 class="card-text">{{$tour->price}}</h6>
             <p class="card-description">{!!$tour->description!!}</p>
+            <p class="card-description">{{$tour->created_at->diffForHumans()}}</p>
             <div class="mt-4">
               <div id="map4" style="width: 1060px; height: 500px;"></div>
             </div>

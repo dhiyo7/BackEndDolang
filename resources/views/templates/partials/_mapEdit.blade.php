@@ -1,7 +1,7 @@
 <script type="text/javascript">
 
 		var options = {
-			center: [-6.894006,109.377652],
+			center: [{{$tour->latitude}},{{$tour->longitude}}],
 			zoom: 13
 		}
 

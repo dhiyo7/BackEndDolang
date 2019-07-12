@@ -1,6 +1,6 @@
 <script>
 
-	var mymap = L.map('map4').setView([-6.894006,109.377652], 13);
+	var mymap = L.map('map4').setView([{{$tour->latitude}},{{$tour->longitude}}], 13);
 
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 18,

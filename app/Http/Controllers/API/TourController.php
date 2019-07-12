@@ -36,12 +36,15 @@ class TourController extends Controller
         'data' => [
           'id' => $tour->id,
           'title' => $tour->title,
-          'address' => $tour->category,
+          'category' => $tour->category,
+          'address' => $tour->address,
           'region' => $tour->region,
           'price' => $tour->price,
           'description' => $tour->description,
           'image' => $tour->image,
-          'panorama' => $tour->panorama,
+          'panorama1' => $tour->panorama1,
+          'panorama2' => $tour->panorama2,
+          'panorama3' => $tour->panorama3,
           'longitude' => $tour->longitude,
           'latitude' => $tour->latitude,
           'comment' => $comments

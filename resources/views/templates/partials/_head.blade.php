@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ asset('asset/vendors/css/vendor.bundle.addons.css')}}">
   <!-- endinject -->
   <!-- plugin css for this page -->
+  
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('asset/vendors/summernote/dist/summernote-bs4.css')}}">
