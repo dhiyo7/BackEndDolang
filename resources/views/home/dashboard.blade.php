@@ -26,6 +26,10 @@
     </div>
   </div> -->
 </div>
-<div id="map" style="width: 1100px; height: 600px;"></div>
+<div id="map-holder">
+  <div class="container fill">
+    <div id="map"></div>
+  </div>
+</div>
 
 @endsection

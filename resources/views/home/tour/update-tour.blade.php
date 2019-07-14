@@ -192,10 +192,13 @@
                         <label for="title">Latitude</label>
                         <input type="text" id="lat" name="latitude" class="form-control" value="{{ old('latitude', $tour->latitude) }}" placeholder="Latitude" required>
                     </div>
-                    <div class="form-group col-12">
-                      <div id="map3" style="width: 1025px; height: 500px"></div>
                     </div>
-                    </div>
+
+                      <div id="map-holder" class="mb-4">
+                        <div class="container fill">
+                          <div id="map3"></div>
+                        </div>
+                      </div>
                     <a style="text-decoration:none" href="{{route('tour')}}" class="btn btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-primary mr-2">Simpan</button>
                 </form>
