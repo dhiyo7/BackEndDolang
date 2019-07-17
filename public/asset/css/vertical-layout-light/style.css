@@ -19064,6 +19064,7 @@ code {
 .demo-vector-map {
   width: 100%;
   height: 500px;
+  z-index:1;
 }
 
 /*-------------------------------------------------------------------*/
@@ -28643,62 +28644,7 @@ div.tagsinput span.tag a {
   }
 }
 
-#map
-{
-    width: 100px;
-    height:600px;
-    min-height: 100%;
-    min-width: 100%;
-    /* display: block; */
-}
-
-#map2
-{
-    width: 100px;
-    height:600px;
-    min-height: 100%;
-    min-width: 100%;
-    /* display: block; */
-}
-
-#map3
-{
-    width: 100px;
-    height:600px;
-    min-height: 100%;
-    min-width: 100%;
-    /* display: block; */
-}
-
-#map4
-{
-    width: 100px;
-    height:600px;
-    min-height: 100%;
-    min-width: 100%;
-    /* display: block; */
-}
-
-html, body
-{
-    height: 100%;
-}
-
-#map-holder{
-    height: 200%;
-}
-
-.fill
-{
-    /* min-height: 100%;
-    height: 100%;
-    width: 100%;
-    max-width: 100%; */
-}
-
-.container{
-    /* max-width:80em;
-    padding: 0.2em; */
-}
-
+/* #map{
+  z-index:1;
+} */
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */

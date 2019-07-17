@@ -18,5 +18,9 @@ Route::get('/tour/{tour}','API\TourController@show');
 Route::get('/category/{category}','API\TourController@category');
 Route::post('/user/register','API\UserController@register');
 Route::post('/user/login','API\UserController@login');
-Route::post('tour/search','API\TourController@search');
+Route::get('/user/profile','API\UserController@profile')->middleware('auth:api');
+Route::post('/user/profile','API\UserController@updateProfile')->middleware('auth:api');
 Route::post('/user/comment','API\UserController@comment')->middleware('auth:api');
+
+
+Route::post('tour/search','API\TourController@search');

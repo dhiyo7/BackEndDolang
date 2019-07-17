@@ -159,11 +159,9 @@
                         <input type="text" id="lat" name="latitude" class="form-control" value="{{ old('latitude') }}" placeholder="Latitude" required>
                     </div>
                     </div>
-                    <div id="map-holder" class="mb-4">
-                      <div class="container fill">
-                        <div id="map2"></div>
+                      <div class="mb-4">
+                        <div id="map2" class="vector-map demo-vector-map"></div>
                       </div>
-                    </div>
                     <a style="text-decoration:none" href="{{route('tour')}}" class="btn btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-primary mr-2">Simpan</button>
                 </form>

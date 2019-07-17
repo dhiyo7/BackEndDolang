@@ -8,6 +8,7 @@ use App\User;
 use App\Comment;
 use App\Tour;
 use Auth;
+use Storage;
 
 class UserController extends Controller
 {
@@ -81,6 +82,59 @@ class UserController extends Controller
         'data' => $comment
       ], 201);
 
+    }
+
+    public function profile(){
+      $user = User::find(Auth::user()->id);
+      return response()->json([
+        'message' => 'Berhasil',
+        'status' => true,
+        'data' => $user
+      ], 200);
+    }
+
+    public function updateProfile(Request $request){
+    $user = User::find(Auth::user()->id);
+      $this->validate($request, [
+        'name' => 'required|min:5',
+        'email' => "required|string|email|unique:users,email,$user->id",
+        'address' => 'required|min:5',
+        'avatar' => 'image|mimes:png,jpg,jpeg|max:2048'
+      ]);
+      if (!$request->avatar == null) {
+        $avatar = $request->file('avatar')->store('avatar');
+        if ($user->avatar == 'avatar/default.png') {
+          $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'avatar' => $avatar
+          ]);
+        }else {
+          $avatar_path = $user->avatar;
+          if (Storage::exists($avatar_path)) {
+            Storage::delete($avatar_path);
+          }
+          $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'avatar' => $avatar
+          ]);
+        }
+      }else {
+        $user->update([
+          'name' => $request->name,
+          'email' => $request->email,
+          'address' => $request->address,
+        ]);
+
+      }
+      return response()->json([
+        'message' => 'Berhasil',
+        'status' => true,
+        'data' => $user
+      ], 201);
     }
 
 }

@@ -27,11 +27,9 @@
             <p class="card-description">{!!$tour->description!!}</p>
             <p class="card-description">{{$tour->created_at->diffForHumans()}}</p>
             <div class="mt-4">
-              <div id="map-holder">
-                <div class="container fill">
-                  <div id="map4"></div>
-                </div>
-              </div>
+
+                <div id="map4" class="vector-map demo-vector-map"></div>
+                
             </div>
             <a style="text-decoration:none" href="{{route('tour.edit',$tour)}}" class="btn btn-info mt-5">Edit</a>
             <button class="btn btn-danger mt-5" data-target="#hapus{{$tour->id}}" data-toggle="modal">Hapus</button>

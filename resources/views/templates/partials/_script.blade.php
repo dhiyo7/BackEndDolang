@@ -16,6 +16,7 @@
 <script src="{{ asset('asset/js/editorDemo.js')}}"></script>
 <!-- endinject -->
 <!-- Custom js for this page-->
+<!-- <script src="{{asset('asset/js/maps.js')}}"></script> -->
 <script src="{{asset('asset/js/data-table.js')}}"></script>
 <script src="{{ asset('asset/js/file-upload.js')}}"></script>
 <script src="{{ asset('asset/js/owl-carousel.js')}}"></script>
