@@ -6,7 +6,9 @@
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item @if(url('home.tour')){
+    {{Request::is('pengguna/*') ? 'active' : ''}}
+  }@endif">
       <a style="text-decoration:none" class="nav-link" href="{{route('user')}}">
         <i class="mdi mdi-account menu-icon"></i>
         <span class="menu-title">Pengguna</span>
@@ -26,6 +28,12 @@
       <a style="text-decoration:none" class="nav-link" href="{{route('tour')}}">
         <i class="mdi mdi-folder-multiple-image menu-icon"></i>
         <span class="menu-title">Pariwisata</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a style="text-decoration:none" class="nav-link" href="{{route('comment')}}">
+        <i class="mdi mdi-comment menu-icon"></i>
+        <span class="menu-title">Komentar</span>
       </a>
     </li>
   </ul>

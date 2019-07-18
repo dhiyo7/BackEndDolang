@@ -25,6 +25,11 @@ Route::group(['prefix' => '/'], function(){
   Route::post('pariwisata/delete/{tour}','Admin\TourController@destroy')->name('tour.destroy');
   Route::get('pariwisata/detail/{tour}','Admin\TourController@show')->name('tour.detail');
   Route::get('pengguna','Admin\UserController@index')->name('user');
+  Route::patch('pengguna/{user}','Admin\UserController@activation')->name('user.activation');
+  Route::get('pengguna/{user}','Admin\UserController@edit')->name('user.edit');
+  Route::patch('pengguna/update/{user}','Admin\UserController@update')->name('user.update');
+  Route::get('komentar','Admin\CommentController@index')->name('comment');
+  Route::post('komentar/{comment}','Admin\CommentController@destroy')->name('comment.destroy');
 
 });
 
