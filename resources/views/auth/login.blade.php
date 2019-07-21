@@ -9,9 +9,9 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left p-5">
               <div class="brand-logo d-flex justify-content-center">
-                <!-- <div class="">
-                  <img src="{{ asset('asset/images/bengkulu.png')}}" alt="logo">
-                </div> -->
+                <div class="">
+                  <img src="{{ asset('asset/images/Logoweb.png')}}" alt="logo">
+                </div>
               </div>
               @if(session()->has('error'))
               <div class="alert alert-fill-danger" role="alert">
