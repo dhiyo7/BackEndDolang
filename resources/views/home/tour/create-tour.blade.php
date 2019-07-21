@@ -81,6 +81,15 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="title">Jam Operasional</label>
+                        <input type="text" class="form-control{{ $errors->has('operational') ? ' is-invalid' : '' }}" name="operational" value="{{ old('operational') }}" placeholder="Masukan Jam Operasional" required autofocus>
+                        @if ($errors->has('operational'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>Jam Operasional terlalu pendek</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <label for="description">Deskripsi</label>
                         <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }} summernote-simple" name="description" rows="8" placeholder="Masukan Deskripsi" required>{{old('description')}}</textarea>
                         @if ($errors->has('description'))

@@ -1,12 +1,6 @@
 @extends('templates.default')
 
 @section('content')
-<div class="card">
-  <div class="card-body">
-    <h4>Pengguna</h4>
-  </div>
-</div>
-<br>
 <div class="row">
   <div class="col-12">
     <div class="card">
@@ -30,10 +24,9 @@
                       <th>No</th>
                       <th>Nama</th>
                       <th>Email</th>
-                      <th>Alamat</th>
                       <th>Terdaftar</th>
                       <th>Status</th>
-                      <th>Aksi</th>
+                      <th class="text-center">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -43,7 +36,6 @@
                       <td>{{$no}}</td>
                       <td>{{$user->name}}</td>
                       <td>{{$user->email}}</td>
-                      <td>{{$user->address}}</td>
                       <td>{{$user->created_at->diffForHumans()}}</td>
                       <td>
                         @if($user->status)
@@ -108,9 +100,6 @@
       										<h4>{{$user->name}}</h4>
                           <p>{{$user->email}}</p>
       									</div>
-      									<p class="mt-4 card-text">
-                          {{$user->address}}
-      									</p>
                         @if($user->status)
                         <button class="btn btn-success btn-sm mt-3 mb-4">Aktif</button>
                         @else

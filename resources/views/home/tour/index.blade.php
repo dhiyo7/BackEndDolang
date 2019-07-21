@@ -8,8 +8,6 @@
     </div>
   </div>
 </div>
-<div class="" id="list">
-</div>
 <br>
 @if(session()->has('success'))
 <div class="alert alert-fill-success" role="alert">

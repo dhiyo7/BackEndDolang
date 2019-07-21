@@ -51,7 +51,6 @@ class UserController extends Controller
             $user->update([
               'name' => $request->name,
               'email' => $request->email,
-              'address' => $request->address,
               'password' => $request->password,
               'avatar' => $avatar
             ]);
@@ -63,7 +62,6 @@ class UserController extends Controller
             $user->update([
               'name' => $request->name,
               'email' => $request->email,
-              'address' => $request->address,
               'password' => $request->password,
               'avatar' => $avatar
             ]);
@@ -75,7 +73,6 @@ class UserController extends Controller
         $user->update([
           'name' => $request->name,
           'email' => $request->email,
-          'address' => $request->address,
           'password' => $request->password
         ]);
       }elseif($request->avatar) {
@@ -84,7 +81,6 @@ class UserController extends Controller
             $user->update([
               'name' => $request->name,
               'email' => $request->email,
-              'address' => $request->address,
               'avatar' => $avatar
             ]);
           }else {
@@ -95,7 +91,6 @@ class UserController extends Controller
             $user->update([
               'name' => $request->name,
               'email' => $request->email,
-              'address' => $request->address,
               'avatar' => $avatar
             ]);
           }
@@ -103,7 +98,6 @@ class UserController extends Controller
           $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'address' => $request->address,
           ]);
         }
 

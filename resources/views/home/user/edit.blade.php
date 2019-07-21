@@ -44,15 +44,6 @@
               @enderror
             </div>
             <div class="form-group">
-              <label>Alamat</label>
-              <textarea name="address" class="form-control @error('address') is-invalid @enderror" rows="4" placeholder="Alamat">{{old('address', $user->address)}}</textarea>
-              @error('address')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>Alamat terlalu pendek</strong>
-                  </span>
-              @enderror
-            </div>
-            <div class="form-group">
               <img src="{{asset('images/'.$user->avatar)}}" class="img-lg rounded-circle mb-2" alt="avatar">
             </div>
             <div class="form-group">

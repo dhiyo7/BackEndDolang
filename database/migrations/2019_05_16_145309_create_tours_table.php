@@ -20,6 +20,7 @@ class CreateToursTable extends Migration
           $table->string('category');
           $table->string('region');
           $table->string('price');
+          $table->string('operational');
           $table->longtext('description');
           $table->string('image');
           $table->string('panorama1');

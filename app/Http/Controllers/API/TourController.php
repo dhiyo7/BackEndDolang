@@ -40,6 +40,7 @@ class TourController extends Controller
           'address' => $tour->address,
           'region' => $tour->region,
           'price' => $tour->price,
+          'operational' => $tour->operational,
           'description' => $tour->description,
           'image' => $tour->image,
           'panorama1' => $tour->panorama1,

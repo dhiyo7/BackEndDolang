@@ -1,12 +1,6 @@
 @extends('templates.default')
 
 @section('content')
-<div class="card">
-  <div class="card-body">
-    <h4>Komentar</h4>
-  </div>
-</div>
-<br>
 <div class="row">
     <div class="col-12">
       <div class="card">
@@ -31,7 +25,7 @@
                         <th>Pengguna</th>
                         <th>Komentar</th>
                         <th>Tanggal/Waktu</th>
-                        <th>Aksi</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
