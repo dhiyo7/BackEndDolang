@@ -32,7 +32,7 @@ class AuthAdminController extends Controller
       }
       return redirect()->back()
               ->withInput($request->only('username','remember'))
-              ->with('error','Gagal Login');
+              ->with('error','');
     }
 
     public function logoutAdmin(){

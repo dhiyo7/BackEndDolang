@@ -13,29 +13,19 @@
                   <img src="{{ asset('asset/images/Logoweb.png')}}" alt="logo">
                 </div>
               </div>
-              @if(session()->has('error'))
+              @if(session()->has('error') || $errors->has('password') ||  $errors->has('username'))
               <div class="alert alert-fill-danger" role="alert">
                 <i class="mdi mdi-alert-circle"></i>
-                {{ session()->get('error') }}
+                Gagl Login, Silahkan coba lagi
               </div>
               @endif
               <form class="pt-3" method="POST" action="{{route('login')}}">
                 @csrf
                 <div class="form-group">
-                  <input type="text" name="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }} form-control-lg" value="{{ old('username') }}" placeholder="Username" autofocus>
-                  @if ($errors->has('username'))
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $errors->first('username') }}</strong>
-                      </span>
-                  @endif
+                  <input type="text" name="username" class="form-control form-control-lg @if( $errors->has('password') ||  $errors->has('username')) is-invalid @endif" placeholder="Username" autofocus>
                 </div>
                 <div class="form-group">
-                  <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }} form-control-lg" placeholder="Password">
-                  @if ($errors->has('password'))
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $errors->first('password') }}</strong>
-                      </span>
-                  @endif
+                  <input type="password" name="password" class="form-control form-control-lg @if( $errors->has('password') ||  $errors->has('username')) is-invalid @endif" placeholder="Password">
                 </div>
                 <div class="mt-3">
                   <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" >Masuk</button>
