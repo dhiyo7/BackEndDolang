@@ -73,6 +73,11 @@
             </div>
           </div>
         </div>
+        <div>
+          <ul class="pagination justify-content-center">
+            {{$tours->links()}}
+          </ul>
+        </div>
         @endif
       </div>
     </div>

@@ -17,11 +17,16 @@
                     <div class="form-group">
                         <label for="title">Judul</label>
                         <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{old('title',$tour->title)}}" placeholder="Masukan Judul">
-                        @if ($errors->has('title'))
+                        @error('title')
                             <span class="invalid-feedback" role="alert">
-                                <strong>Judul terlalu pendek</strong>
+                                <strong>@if($message == 'validation.regex')
+                                  Masukan Judul dengan benar
+                                  @else
+                                  Judul terlalu pendek
+                                  @endif
+                                </strong>
                             </span>
-                        @endif
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="title">Alamat</label>
@@ -64,11 +69,14 @@
                           <div class="input-group-text text-dark">Rp.</div>
                         </div>
                         <input type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" value="{{old('price',substr($tour->price,4))}}" name="price" id="price" placeholder="Masukan Biaya" required>
-                        @if ($errors->has('price'))
+                        @error('price')
                             <span class="invalid-feedback" role="alert">
-                                <strong>HTM minimal 5000</strong>
+                              <strong>@if($message == 'validation.between.numeric')
+                                HTM minimal Rp. 5.000
+                                @endif
+                              </strong>
                             </span>
-                        @endif
+                        @enderror
                       </div>
                     </div>
                     <div class="form-group">
@@ -122,17 +130,24 @@
                     </div>
                     <div class="form-group col-6">
                       <label>Gambar</label>
-                      <input type="file" name="image" class="file-upload-default">
+                      <input type="file" name="image" class="file-upload-default" accept="image/*">
                       <div class="input-group col-xs-12">
                         <input type="text" class="form-control file-upload-info{{ $errors->has('image') ? ' is-invalid' : '' }}" disabled placeholder="Pilih Gambar">
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                         </span>
-                        @if ($errors->has('image'))
+                        @error('image')
                         <span class="invalid-feedback" role="alert">
-                            <strong>File gambar harus JPG,PNG,JPEG dan harus kurang dari 2MB</strong>
+                              <strong>@if($message == 'validation.required')
+                                Gambar tidak boleh kosong
+                                @elseif($message == 'validation.uploaded')
+                                Gambar maksimal 2MB
+                                @else
+                                Gambar harus JPG,JPEG, dan PNG
+                                @endif
+                              </strong>
                         </span>
-                        @endif
+                        @enderror
                       </div>
                     </div>
                     <div class="row">
@@ -150,47 +165,68 @@
                       </div>
                     <div class="form-group col-4">
                       <label>Panorama 1</label>
-                      <input type="file" name="panorama1" class="file-upload-default">
+                      <input type="file" name="panorama1" class="file-upload-default" accept="image/*">
                       <div class="input-group col-xs-12">
                         <input type="text" class="form-control file-upload-info{{ $errors->has('panorama1') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                         </span>
-                        @if ($errors->has('panorama1'))
+                        @error('panorama1')
                         <span class="invalid-feedback" role="alert">
-                            <strong>File panorama harus JPG,PNG,JPEG</strong>
+                              <strong>@if($message == 'validation.required')
+                                Gambar tidak boleh kosong
+                                @elseif($message == 'validation.uploaded')
+                                Gambar maksimal 2MB
+                                @else
+                                Gambar harus JPG,JPEG, dan PNG
+                                @endif
+                              </strong>
                         </span>
-                        @endif
+                        @enderror
                       </div>
                     </div>
                     <div class="form-group col-4">
                       <label>Panorama 2</label>
-                      <input type="file" name="panorama2" class="file-upload-default">
+                      <input type="file" name="panorama2" class="file-upload-default" accept="image/*">
                       <div class="input-group col-xs-12">
                         <input type="text" class="form-control file-upload-info{{ $errors->has('panorama2') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                         </span>
-                        @if ($errors->has('panorama2'))
+                        @error('panorama2')
                         <span class="invalid-feedback" role="alert">
-                            <strong>File panorama harus JPG,PNG,JPEG</strong>
+                              <strong>@if($message == 'validation.required')
+                                Gambar tidak boleh kosong
+                                @elseif($message == 'validation.uploaded')
+                                Gambar maksimal 2MB
+                                @else
+                                Gambar harus JPG,JPEG, dan PNG
+                                @endif
+                              </strong>
                         </span>
-                        @endif
+                        @enderror
                       </div>
                     </div>
                     <div class="form-group col-4">
                       <label>Panorama 3</label>
-                      <input type="file" name="panorama3" class="file-upload-default">
+                      <input type="file" name="panorama3" class="file-upload-default" accept="image/*">
                       <div class="input-group col-xs-12">
                         <input type="text" class="form-control file-upload-info{{ $errors->has('panorama3') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                         </span>
-                        @if ($errors->has('panorama3'))
+                        @error('panorama3')
                         <span class="invalid-feedback" role="alert">
-                            <strong>File panorama harus JPG,PNG,JPEG</strong>
+                              <strong>@if($message == 'validation.required')
+                                Gambar tidak boleh kosong
+                                @elseif($message == 'validation.uploaded')
+                                Gambar maksimal 2MB
+                                @else
+                                Gambar harus JPG,JPEG, dan PNG
+                                @endif
+                              </strong>
                         </span>
-                        @endif
+                        @enderror
                       </div>
                     </div>
                     <div class="form-group col-6">

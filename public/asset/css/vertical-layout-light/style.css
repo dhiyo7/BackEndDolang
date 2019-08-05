@@ -13678,9 +13678,11 @@ input[type="button"].btn-block {
 }
 
 .card-img-top {
+  radius: 10%;
   width: 100%;
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px);
+  padding: 50px;
+  border-top-left-radius: calc(1.25rem - 1px);
+  border-top-right-radius: calc(1.25rem - 1px);
 }
 
 .card-img-bottom {

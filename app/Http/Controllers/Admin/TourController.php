@@ -14,7 +14,7 @@ class TourController extends Controller
     }
 
     public function index(){
-      $tours = Tour::all();
+      $tours = Tour::orderBy('id','DESC')->paginate(8);
       return view('home.tour.index', compact('tours'));
     }
 
@@ -25,21 +25,21 @@ class TourController extends Controller
 
     public function store(Request $request)
     {
-      //dd($request->all());
       $this->validate($request,[
-        'title' => 'required|min:5',
+        'title' => 'required|regex:/^[\pL\s\-]+$/u|min:5|max:25',
         'address' => 'required|min:10',
         'region' => 'required|in:Ampelgading,Bantarbolang,Belik,Bodeh,Comal,Moga,Pemalang,Petarukan,Pulosari,Randudongkal,Taman,Ulujami,Warungpring,Watukumpul',
-        'price' => 'required|min:2',
+        'price' => 'required|numeric|between:5.000,1000.000',
         'operational' => 'required|min:5',
         'description' => 'required|min:50',
-        'image' => 'required|mimes:jpeg,png,jpeg',
-        'panorama1' => 'required|mimes:jpeg,png,jpeg',
-        'panorama2' => 'required|mimes:jpeg,png,jpeg',
-        'panorama3' => 'required|mimes:jpeg,png,jpeg',
+        'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+        'panorama1' => 'required|image|mimes:jpeg,png,jpeg|max:2048',
+        'panorama2' => 'required|image|mimes:jpeg,png,jpeg|max:2048',
+        'panorama3' => 'required|image|mimes:jpeg,png,jpeg|max:2048',
       ]);
 
-      $image = $request->file('image')->store('pictures');
+
+
       $panorama1 = $request->file('panorama1')->store('panorama');
       $panorama2 = $request->file('panorama2')->store('panorama');
       $panorama3 = $request->file('panorama3')->store('panorama');
@@ -76,16 +76,17 @@ class TourController extends Controller
 
     public function update(Request $request, Tour $tour)
     {
-      // dd($request->all());
       $this->validate($request,[
-        'title' => 'required|min:5',
+        'title' => 'required|regex:/^[\pL\s\-]+$/u|min:5|max:25',
         'address' => 'required|min:10',
         'region' => 'required|in:Ampelgading,Bantarbolang,Belik,Bodeh,Comal,Moga,Pemalang,Petarukan,Pulosari,Randudongkal,Taman,Ulujami,Warungpring,Watukumpul',
-        'price' => 'required|min:2',
+        'price' => 'required|numeric|between:5.000,1000.000',
         'operational' => 'required|min:5',
         'description' => 'required|min:50',
-        'image' => 'mimes:jpeg,png,jpeg',
-        'panorama' => 'mimes:jpeg,png,jpeg',
+        'image' => 'image|mimes:jpg,png,jpeg|max:2048',
+        'panorama1' => 'image|mimes:jpeg,png,jpeg|max:2048',
+        'panorama2' => 'image|mimes:jpeg,png,jpeg|max:2048',
+        'panorama3' => 'image|mimes:jpeg,png,jpeg|max:2048',
       ]);
       if ($request->image) {
           $image_path = $tour->image;

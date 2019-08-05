@@ -13,7 +13,7 @@ class CommentController extends Controller
   }
 
   public function index(){
-    $comments = Comment::all();
+    $comments = Comment::orderBy('id', 'DESC')->get();
     return view('home.comment.index', compact('comments'));
   }
 

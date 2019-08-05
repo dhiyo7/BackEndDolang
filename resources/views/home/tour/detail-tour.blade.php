@@ -3,7 +3,6 @@
 @section('content')
     <div class="card">
         <img class="card-img-top" src="{{ asset('images/'.$tour->image) }}" height="700rem" alt="Card image cap">
-        </div>
         <div class="card-body">
           <div class="mb-3 mr-2">
             <div class="row">
@@ -29,13 +28,14 @@
             <div class="mt-4">
 
                 <div id="map4" class="vector-map demo-vector-map"></div>
-                
+
             </div>
             <a style="text-decoration:none" href="{{route('tour.edit',$tour)}}" class="btn btn-info mt-5">Edit</a>
             <button class="btn btn-danger mt-5" data-target="#hapus{{$tour->id}}" data-toggle="modal">Hapus</button>
             <a style="text-decoration:none" href="{{route('tour')}}" class="btn btn-secondary mt-5">Kembali</a>
         </div>
     </div>
+  </div>
     <!-- modal hapus -->
     <div class="modal fade" id="hapus{{$tour->id}}" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
