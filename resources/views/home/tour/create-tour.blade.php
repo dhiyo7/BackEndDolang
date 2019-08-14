@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @section('content')
-@if ($errors->all())
+@if ($errors->all() || session()->has('errorOperational'))
 <div class="alert alert-fill-danger" role="alert">
   <i class="mdi mdi-alert-circle"></i>
   Wisata Gagal Disimpan
@@ -103,7 +103,7 @@
                       <div class="form-group col-2">
                         <div class="input-group date" id="timepicker-example" data-target-input="nearest">
                           <div class="input-group" data-target="#timepicker-example" data-toggle="datetimepicker">
-                            <input type="text" name="open" class="form-control datetimepicker-input" value="{{old('open')}}" data-target="#timepicker-example" required/>
+                            <input type="text" name="open" id="opened" class="form-control datetimepicker-input @if(Session::get('errorOperational')) is-invalid @endif" value="{{old('open')}}" data-target="#timepicker-example" required/>
                             <div class="input-group-addon input-group-append"><i class="mdi mdi-clock input-group-text"></i></div>
                           </div>
                         </div>
@@ -114,8 +114,14 @@
                       <div class="form-group col-2 ml-1">
                         <div class="input-group date" id="timepicker-example2" data-target-input="nearest">
                           <div class="input-group" data-target="#timepicker-example2" data-toggle="datetimepicker">
-                            <input type="text" name="closed" class="form-control datetimepicker-input" value="{{old('closed')}}" data-target="#timepicker-example2" required/>
+                            <input type="text" name="closed" id="closed" class="form-control datetimepicker-input @if(Session::get('errorOperational')) is-invalid @endif" value="{{old('closed')}}" data-target="#timepicker-example2" required/>
                             <div class="input-group-addon input-group-append"><i class="mdi mdi-clock input-group-text"></i></div>
+                            @if(Session::get('errorOperational'))
+                            <span class="invalid-feedback" role="alert">
+                                  <strong>{{Session::get('errorOperational')}}
+                                  </strong>
+                            </span>
+                            @endif
                           </div>
                         </div>
                       </div>
@@ -123,7 +129,6 @@
                         <label for="">WIB</label>
                       </div>
                     </div>
-
 
                     <div class="form-group">
                         <label for="description">Deskripsi</label>
@@ -163,11 +168,11 @@
                         <label>Panorama</label>
                         <input type="file" name="panorama[]" class="file-upload-default" accept="image/*" multiple="multiple" >
                         <div class="input-group col-xs-12">
-                          <input type="text" class="form-control file-upload-info @error('panorama') is-invalid @enderror" disabled placeholder="Pilih Panorama">
+                          <input type="text" class="form-control file-upload-info @error('panorama.*') is-invalid @enderror" disabled placeholder="Pilih Panorama">
                           <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                           </span>
-                          @error('panorama')
+                          @error('panorama.*')
                           <span class="invalid-feedback" role="alert">
                                 <strong>@if($message == 'validation.required')
                                   Gambar tidak boleh kosong

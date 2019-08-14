@@ -3,10 +3,20 @@
 @section('content')
     <div class="card">
         <img class="card-img-top" src="{{ asset('images/'.$tour->image) }}" height="700rem" alt="Card image cap">
+        <div class="row justify-content-md-center">
+            <div class="col-md-8 col-md-offset-6">
+                  <div class="owl-carousel owl-theme full-width">
+                    @foreach($tour->panoramas as $panorama)
+                    <div class="item">
+                      <img src="{{asset('images/'.$panorama->path)}}" width="600px" height="500px" alt="image"/>
+                    </div>
+                    @endforeach
+                  </div>
+                </div>
+              </div>
         <div class="card-body">
           <div class="mb-3 mr-2">
-
-            <h4 class="card-title">{!!$tour->panoramas!!}</h4>
+            <h4 class="card-title">{{$tour->name}}</h4>
             <h6 class="card-text">{{$tour->category}}</h6>
             <h6 class="card-text">{{$tour->region}}, {{$tour->address}}</h6>
             <h6 class="card-text">Rp. {{number_format($tour->price,0,',','.')}}</h6>

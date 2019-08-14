@@ -17,8 +17,7 @@ class CreatePanoramasTable extends Migration
             $table->bigIncrements('id');
             $table->string('path');
             $table->integer('tour_id')->unsigned();
-            $table->timestamps();
-
+      
             $table->foreign('tour_id')->references('id')->on('tours')->onDelete('CASCADE');
         });
     }
