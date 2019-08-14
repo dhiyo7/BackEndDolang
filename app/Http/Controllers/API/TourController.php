@@ -16,10 +16,27 @@ class TourController extends Controller
 
     public function index(){
       $tours = Tour::all();
+      $result = array();
+      foreach ($tours as $tour) {
+        $result[] = [
+          'id' => $tour->id,
+          'title' => $tour->name,
+          'category' => $tour->category,
+          'address' => $tour->address,
+          'region' => $tour->region,
+          'price' => 'Rp. '.number_format($tour->price,0,',','.'),
+          'operational' => $tour->operational,
+          'description' => $tour->description,
+          'image' => $tour->image,
+          'longitude' => $tour->longitude,
+          'latitude' => $tour->latitude,
+          'panoramas' => $tour->panoramas
+        ];
+      }
       return response()->json([
         'message' => 'Berhasil',
         'status' => true,
-        'data' => $tours
+        'data' => $result,
       ], 200);
     }
 
@@ -35,19 +52,17 @@ class TourController extends Controller
         'status' => true,
         'data' => [
           'id' => $tour->id,
-          'title' => $tour->title,
+          'title' => $tour->name,
           'category' => $tour->category,
           'address' => $tour->address,
           'region' => $tour->region,
-          'price' => $tour->price,
+          'price' => 'Rp. '.number_format($tour->price,0,',','.'),
           'operational' => $tour->operational,
           'description' => $tour->description,
           'image' => $tour->image,
-          'panorama1' => $tour->panorama1,
-          'panorama2' => $tour->panorama2,
-          'panorama3' => $tour->panorama3,
           'longitude' => $tour->longitude,
           'latitude' => $tour->latitude,
+          'panoramas' => $tour->panoramas,
           'comment' => $comments
         ]
       ], 200);

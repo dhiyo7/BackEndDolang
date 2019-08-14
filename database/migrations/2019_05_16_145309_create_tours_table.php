@@ -15,17 +15,15 @@ class CreateToursTable extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('title');
+          $table->string('name', 50);
+          $table->string('slug', 100)->unique();
           $table->text('address');
           $table->string('category');
           $table->string('region');
-          $table->string('price');
+          $table->integer('price');
           $table->string('operational');
           $table->longtext('description');
           $table->string('image');
-          $table->string('panorama1');
-          $table->string('panorama2');
-          $table->string('panorama3');
           $table->string('longitude');
           $table->string('latitude');
           $table->timestamps();

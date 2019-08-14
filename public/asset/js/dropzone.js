@@ -1,6 +1,4 @@
 (function($) {
   'use strict';
-  $("my-awesome-dropzone").dropzone({
-    url: "urbanui.com/"
-  });
+  $("my-awesome-dropzone").dropzone();
 })(jQuery);

@@ -5,11 +5,13 @@
 <!-- Plugin js for this page-->
 <!-- End plugin js for this page-->
 <!-- inject:js -->
+
 <script src="{{ asset('asset/js/off-canvas.js')}}"></script>
 <script src="{{ asset('asset/js/hoverable-collapse.js')}}"></script>
 <script src="{{ asset('asset/js/template.js')}}"></script>
 <script src="{{ asset('asset/js/settings.js')}}"></script>
 <script src="{{ asset('asset/js/todolist.js')}}"></script>
+<script src="{{ asset('asset/js/formpickers.js')}}"></script>
 <script src="{{ asset('asset/vendors/tinymce/tinymce.min.js')}}"></script>
 <script src="{{ asset('asset/vendors/tinymce/themes/modern/theme.js')}}"></script>
 <script src="{{ asset('asset/vendors/summernote/dist/summernote-bs4.min.js')}}"></script>

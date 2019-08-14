@@ -30,7 +30,8 @@ Route::group(['prefix' => '/'], function(){
   Route::patch('pengguna/update/{user}','Admin\UserController@update')->name('user.update');
   Route::get('komentar','Admin\CommentController@index')->name('comment');
   Route::post('komentar/{comment}','Admin\CommentController@destroy')->name('comment.destroy');
-
+  Route::get('examples','Admin\TourController@showExample');
+  Route::post('examples','Admin\TourController@examples')->name('examples');
 });
 
 // Auth::routes();

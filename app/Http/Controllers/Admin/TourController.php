@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tour;
+use App\Panorama;
 use Storage;
 
 class TourController extends Controller
@@ -25,40 +26,47 @@ class TourController extends Controller
 
     public function store(Request $request)
     {
+      //dd($request->file("panorama"));
+
       $this->validate($request,[
-        'title' => 'required|regex:/^[\pL\s\-]+$/u|min:5|max:25',
+        'name' => 'required|regex:/^[\pL\s\-]+$/u|min:5|max:25',
         'address' => 'required|min:10',
         'region' => 'required|in:Ampelgading,Bantarbolang,Belik,Bodeh,Comal,Moga,Pemalang,Petarukan,Pulosari,Randudongkal,Taman,Ulujami,Warungpring,Watukumpul',
         'price' => 'required|numeric|between:5.000,1000.000',
-        'operational' => 'required|min:5',
         'description' => 'required|min:50',
         'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-        'panorama1' => 'required|image|mimes:jpeg,png,jpeg|max:2048',
-        'panorama2' => 'required|image|mimes:jpeg,png,jpeg|max:2048',
-        'panorama3' => 'required|image|mimes:jpeg,png,jpeg|max:2048',
+        'panorama' => 'required|image|mimes:jpeg,png,jpeg|max:2048|multiple',
       ]);
-
-
-
-      $panorama1 = $request->file('panorama1')->store('panorama');
-      $panorama2 = $request->file('panorama2')->store('panorama');
-      $panorama3 = $request->file('panorama3')->store('panorama');
-
-      Tour::create([
-        'title' => $request->title,
+      $slug = str_slug($request->name);
+      $tour = Tour::where('slug',$slug)->get();
+      if (!$tour->isEmpty()) {
+        return back()->with('errorName','Nama sudah ada')->withInput();
+      }
+      $price = str_replace('.','',$request->price);
+      $image = $request->file('image')->store('pictures');
+      $tour = Tour::create([
+        'name' => $request->name,
+        'slug' => str_slug($request->name),
         'address' => $request->address,
         'region' => $request->region,
         'category' => $request->category,
-        'price' => 'Rp. '.$request->price,
-        'operational' => $request->operational,
+        'price' => $price,
+        'operational' => $request->open.' Sampai '.$request->closed.' WIB',
         'description' => $request->description,
         'image' => $image,
-        'panorama1' => $panorama1,
-        'panorama2' => $panorama2,
-        'panorama3' => $panorama3,
         'longitude' => $request->longitude,
         'latitude' => $request->latitude
       ]);
+
+      foreach ($request->file('panorama') as $panorama) {
+        $path = $panorama->store('panorama');
+        Panorama::create([
+          'path' => $path,
+          'tour_id' => $tour->id
+        ]);
+      }
+
+
 
       return redirect()->route('tour')->with('success','Wisata berhasil ditambahkan');
 
@@ -321,5 +329,13 @@ class TourController extends Controller
       }
       $tour->delete();
       return redirect()->route('tour')->with('success','Wisata berhasil dihapus');
+    }
+
+    public function examples(Request $request){
+      dd($request->all());
+    }
+
+    public function showExample(Request $request){
+      return view('examples');
     }
 }

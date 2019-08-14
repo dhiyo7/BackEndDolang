@@ -11,12 +11,12 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Form tambah wisata</h4>
-                <form class="forms-sample" action="{{route('tour.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('tour.store')}}" method="post" enctype="multipart/form-data">
                   @csrf
                     <div class="form-group">
-                        <label for="title">Judul</label>
-                        <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}" placeholder="Masukan Judul" required autofocus>
-                        @error('title')
+                        <label for="title">Nama Pariwisata</label>
+                        <input type="text" class="form-control @if($errors->has('name') || Session::has('errorName')) is-invalid  @endif" name="name" value="{{ old('name') }}" placeholder="Masukan Judul" required autofocus>
+                        @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>@if($message == 'validation.regex')
                                   Masukan Judul dengan benar
@@ -26,6 +26,13 @@
                                 </strong>
                             </span>
                         @enderror
+                      @if(Session::has('errorName'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>
+                                  {{Session::get('errorName')}}
+                                </strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="title">Alamat</label>
@@ -88,15 +95,36 @@
                           <option value="Taman" {{old('category') == 'Taman' ? 'selected' : ''}}>Taman</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="title">Jam Operasional</label>
-                        <input type="text" class="form-control{{ $errors->has('operational') ? ' is-invalid' : '' }}" name="operational" value="{{ old('operational') }}" placeholder="Masukan Jam Operasional" required autofocus>
-                        @if ($errors->has('operational'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>Jam Operasional terlalu pendek</strong>
-                            </span>
-                        @endif
+
+                    <div class="row">
+                      <div class="form-group col-12">
+                        <label for="">Jam Operasional</label>
+                      </div>
+                      <div class="form-group col-2">
+                        <div class="input-group date" id="timepicker-example" data-target-input="nearest">
+                          <div class="input-group" data-target="#timepicker-example" data-toggle="datetimepicker">
+                            <input type="text" name="open" class="form-control datetimepicker-input" value="{{old('open')}}" data-target="#timepicker-example" required/>
+                            <div class="input-group-addon input-group-append"><i class="mdi mdi-clock input-group-text"></i></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-1 mt-3 mr-0">
+                        <label for="">Sampai</label>
+                      </div>
+                      <div class="form-group col-2 ml-1">
+                        <div class="input-group date" id="timepicker-example2" data-target-input="nearest">
+                          <div class="input-group" data-target="#timepicker-example2" data-toggle="datetimepicker">
+                            <input type="text" name="closed" class="form-control datetimepicker-input" value="{{old('closed')}}" data-target="#timepicker-example2" required/>
+                            <div class="input-group-addon input-group-append"><i class="mdi mdi-clock input-group-text"></i></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-1 mt-3 mr-0">
+                        <label for="">WIB</label>
+                      </div>
                     </div>
+
+
                     <div class="form-group">
                         <label for="description">Deskripsi</label>
                         <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }} summernote-simple" name="description" rows="8" placeholder="Masukan Deskripsi" required>{{old('description')}}</textarea>
@@ -106,6 +134,7 @@
                             </span>
                         @endif
                     </div>
+                    <div class="row">
                     <div class="form-group col-6">
                       <label>Gambar</label>
                       <input type="file" name="image" class="file-upload-default" accept="image/*">
@@ -128,73 +157,32 @@
                         @enderror
                       </div>
                     </div>
+                  </div>
                     <div class="row">
-                    <div class="form-group col-4">
-                      <label>Panorama 1</label>
-                      <input type="file" name="panorama1" class="file-upload-default" accept="image/*">
-                      <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama1') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama">
-                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
-                        @error('panorama1')
-                        <span class="invalid-feedback" role="alert">
-                              <strong>@if($message == 'validation.required')
-                                Gambar panorama tidak boleh kosong
-                                @elseif($message == 'validation.uploaded')
-                                Gambar panorama maksimal 2MB
-                                @else
-                                Gambar panorama harus JPG,JPEG, dan PNG
-                                @endif
-                              </strong>
-                        </span>
-                        @enderror
+                      <div class="form-group col-6">
+                        <label>Panorama</label>
+                        <input type="file" name="panorama[]" class="file-upload-default" accept="image/*" multiple="multiple" >
+                        <div class="input-group col-xs-12">
+                          <input type="text" class="form-control file-upload-info @error('panorama') is-invalid @enderror" disabled placeholder="Pilih Panorama">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                          @error('panorama')
+                          <span class="invalid-feedback" role="alert">
+                                <strong>@if($message == 'validation.required')
+                                  Gambar tidak boleh kosong
+                                  @elseif($message == 'validation.uploaded')
+                                  Gambar maksimal 2MB
+                                  @else
+                                  Gambar harus JPG,JPEG, dan PNG
+                                  @endif
+                                </strong>
+                          </span>
+                          @enderror
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group col-4">
-                      <label>Panorama 2</label>
-                      <input type="file" name="panorama2" class="file-upload-default" accept="image/*">
-                      <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama2') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama" required>
-                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
-                        @error('panorama2')
-                        <span class="invalid-feedback" role="alert">
-                              <strong>@if($message == 'validation.required')
-                                Gambar panorama tidak boleh kosong
-                                @elseif($message == 'validation.uploaded')
-                                Gambar panorama maksimal 2MB
-                                @else
-                                Gambar panorama harus JPG,JPEG, dan PNG
-                                @endif
-                              </strong>
-                        </span>
-                        @enderror
-                      </div>
-                    </div>
-                    <div class="form-group col-4">
-                      <label>Panorama 3</label>
-                      <input type="file" name="panorama3" class="file-upload-default" accept="image/*">
-                      <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info{{ $errors->has('panorama3') ? ' is-invalid' : '' }}" disabled placeholder="Pilih panorama" required>
-                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
-                        @error('panorama3')
-                        <span class="invalid-feedback" role="alert">
-                              <strong>@if($message == 'validation.required')
-                                Gambar panorama tidak boleh kosong
-                                @elseif($message == 'validation.uploaded')
-                                Gambar panorama maksimal 2MB
-                                @else
-                                Gambar panorama harus JPG,JPEG, dan PNG
-                                @endif
-                              </strong>
-                        </span>
-                        @enderror
-                      </div>
-                    </div>
+                      <div class="row">
                     <div class="form-group col-6">
                         <label for="title">Longitude</label>
                         <input type="text" id="long" name="longitude" class="form-control" value="{{ old('longitude') }}" placeholder="Longitude" required>

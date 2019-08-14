@@ -2,7 +2,12 @@
   'use strict';
   if ($("#timepicker-example").length) {
     $('#timepicker-example').datetimepicker({
-      format: 'LT'
+      format: 'HH:mm'
+    });
+  }
+  if ($("#timepicker-example2").length) {
+    $('#timepicker-example2').datetimepicker({
+      format: 'HH:mm'
     });
   }
   if ($(".color-picker").length) {
