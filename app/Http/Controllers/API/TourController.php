@@ -84,11 +84,30 @@ class TourController extends Controller
     }
 
     public function search(Request $request){
-      $tour = Tour::where('title','LIKE','%'.$request->search.'%')->orWhere('category','LIKE','%'.$request->search.'%')->get();
+      $tours = Tour::where('title','LIKE','%'.$request->search.'%')
+            ->orWhere('category','LIKE','%'.$request->search.'%')
+            ->orWhere('region','LIKE','%'.$request->search.'%')->get();
+            $result = array();
+            foreach ($tours as $tour) {
+              $result[] = [
+                'id' => $tour->id,
+                'title' => $tour->name,
+                'category' => $tour->category,
+                'address' => $tour->address,
+                'region' => $tour->region,
+                'price' => 'Rp. '.number_format($tour->price,0,',','.'),
+                'operational' => $tour->operational,
+                'description' => $tour->description,
+                'image' => $tour->image,
+                'longitude' => $tour->longitude,
+                'latitude' => $tour->latitude,
+                'panoramas' => $tour->panoramas
+              ];
+            }
       return response()->json([
         'status' => true,
         'message' => 'Success',
-        'data' => $tour
+        'data' => $result
       ], 200);
     }
 }

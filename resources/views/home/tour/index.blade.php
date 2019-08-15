@@ -11,7 +11,7 @@
         <div class="text-right" style="margin-button:10px">
           <div class="dropdown">
             <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuIconButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <!-- <i class="mdi mdi-security"></i> --> Kategori
+              <!-- <i class="mdi mdi-security"></i> --> Filter
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton6">
              <a class="dropdown-item" href="{{route('tour.filter', 'Bukit')}}">Bukit</a>
