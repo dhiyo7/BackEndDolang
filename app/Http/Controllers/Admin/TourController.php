@@ -164,4 +164,10 @@ class TourController extends Controller
 
       return redirect()->back()->with('success','Panorama berhasil dihapus');
     }
+
+    public function filter($category){
+
+      $tours = Tour::orderBy('id','DESC')->where('category',$category)->paginate(8);
+      return view('home.tour.index', compact('tours'));
+    }
 }

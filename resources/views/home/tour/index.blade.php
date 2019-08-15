@@ -3,9 +3,30 @@
 <div class="card">
   <div class="card-body">
     <h4>Pariwisata</h4>
-    <div class="text-right" style="margin-button:10px">
-      <a href="{{ route('tour.create') }}" class="btn btn-primary">Tambah</a>
+    <div class="row">
+      <div class="col-6 mt-3">
+          <a href="{{ route('tour.create') }}" class="btn btn-primary">Tambah</a>
+      </div>
+      <div class="col-6 mt-3">
+        <div class="text-right" style="margin-button:10px">
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuIconButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <!-- <i class="mdi mdi-security"></i> --> Kategori
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton6">
+             <a class="dropdown-item" href="{{route('tour.filter', 'Bukit')}}">Bukit</a>
+             <a class="dropdown-item" href="{{route('tour.filter', 'Curug')}}">Curug</a>
+             <a class="dropdown-item" href="{{route('tour.filter', 'Kolam Renang')}}">Kolam Renang</a>
+             <a class="dropdown-item" href="{{route('tour.filter', 'Pantai')}}">Pantai</a>
+             <a class="dropdown-item" href="{{route('tour.filter', 'Taman')}}">Taman</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+
   </div>
 </div>
 <br>

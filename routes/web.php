@@ -31,6 +31,7 @@ Route::group(['prefix' => '/'], function(){
   Route::get('komentar','Admin\CommentController@index')->name('comment');
   Route::post('komentar/{comment}','Admin\CommentController@destroy')->name('comment.destroy');
   Route::post('pariwisata/edit/{panorama}','Admin\TourController@panoramaDestroy')->name('panorama.destroy');
+  Route::get('pariwisata/{category}','Admin\TourController@filter')->name('tour.filter');
 });
 
 // Auth::routes();
