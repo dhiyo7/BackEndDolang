@@ -32,7 +32,6 @@ class TourController extends Controller
         'name' => 'required|regex:/^[\pL\s\-]+$/u|min:5|max:25',
         'address' => 'required|min:10',
         'region' => 'required|in:Ampelgading,Bantarbolang,Belik,Bodeh,Comal,Moga,Pemalang,Petarukan,Pulosari,Randudongkal,Taman,Ulujami,Warungpring,Watukumpul',
-        'price' => 'required|numeric|between:5.000,1000.000',
         'description' => 'required|min:50',
         'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
         'panorama.*' => 'required|image|mimes:jpg,png,jpeg|max:2048'
@@ -41,13 +40,16 @@ class TourController extends Controller
       $tour = Tour::where('slug',$slug)->get();
       $open = str_replace('0','',substr($request->open, 0,2));
       $closed = str_replace('0','',substr($request->closed, 0,2));
+          $price = str_replace('.','',$request->price);
       if (!$tour->isEmpty()) {
         return back()->with('errorName','Nama sudah ada')->withInput();
+      }
+      if ($price < 5000 || $price > 1000000) {
+        return back()->with('errorPrice','HTM minimal 5.000 & maksimal 1.000.000')->withInput();
       }
       if($closed < $open){
         return back()->with('errorOperational','Jam operasional tidak benar')->withInput();
       }
-      $price = str_replace('.','',$request->price);
       $image = $request->file('image')->store('pictures');
       $tour = Tour::create([
         'name' => $request->name,
@@ -93,13 +95,16 @@ class TourController extends Controller
         'name' => 'required|regex:/^[\pL\s\-]+$/u|min:5|max:25',
         'address' => 'required|min:10',
         'region' => 'required|in:Ampelgading,Bantarbolang,Belik,Bodeh,Comal,Moga,Pemalang,Petarukan,Pulosari,Randudongkal,Taman,Ulujami,Warungpring,Watukumpul',
-        'price' => 'required|numeric|between:5.000,1000.000',
         'description' => 'required|min:50',
         'image' => 'image|mimes:jpg,png,jpeg|max:2048',
         'panorama.*' => 'image|mimes:jpg,png,jpeg|max:2048'
       ]);
       $open = str_replace('0','',substr($request->open, 0,2));
       $closed = str_replace('0','',substr($request->closed, 0,2));
+      $price = str_replace('.','',$request->price);
+      if ($price < 5000 || $price > 1000000) {
+        return back()->with('errorPrice','HTM minimal 5.000 & maksimal 1.000.000')->withInput();
+      }
       if($closed < $open){
         return back()->with('errorOperational','Jam operasional tidak benar')->withInput();
       }
@@ -107,7 +112,6 @@ class TourController extends Controller
       if($request->image){
         $image = $request->file('image')->store('pictures');
       }
-      $price = str_replace('.','',$request->price);
       $tour->update([
         'name' => $request->name,
         'slug' => str_slug($request->name),

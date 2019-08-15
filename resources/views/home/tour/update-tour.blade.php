@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @section('content')
-@if ($errors->has('title') || $errors->has('description') || $errors->has('image') || $errors->has('panorama.*') || session()->has('errorOperational') )
+@if ($errors->all() || session()->has('errorOperational') || session()->has('errorPrice'))
 <div class="alert alert-fill-danger" role="alert">
   <i class="mdi mdi-alert-circle"></i>
   Wisata Gagal Disimpan
@@ -80,15 +80,13 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text text-dark">Rp.</div>
                         </div>
-                        <input type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" value="{{old('price',number_format($tour->price,0,',','.'))}}" name="price" id="price" placeholder="Masukan Biaya" required>
-                        @error('price')
-                            <span class="invalid-feedback" role="alert">
-                              <strong>@if($message == 'validation.between.numeric')
-                                HTM minimal Rp. 5.000
-                                @endif
+                        <input type="text" class="form-control @if(Session::get('errorPrice')) is-invalid @endif" value="{{old('price',number_format($tour->price,0,',','.'))}}" name="price" id="price" placeholder="Masukan Biaya" required>
+                        @if(Session::get('errorPrice'))
+                        <span class="invalid-feedback" role="alert">
+                              <strong>{{Session::get('errorPrice')}}
                               </strong>
-                            </span>
-                        @enderror
+                        </span>
+                        @endif
                       </div>
                     </div>
                     <div class="form-group">
