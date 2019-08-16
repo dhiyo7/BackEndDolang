@@ -28,9 +28,12 @@ class TourController extends Controller
           'operational' => $tour->operational,
           'description' => $tour->description,
           'image' => $tour->image,
+          'panorama1' => $tour->panoramas[0]->path,
+          'panorama2' => $tour->panoramas[0]->path,
+          'panorama3' => $tour->panoramas[0]->path,
           'longitude' => $tour->longitude,
           'latitude' => $tour->latitude,
-          'panoramas' => $tour->panoramas
+          // 'panoramas' => $tour->panoramas
         ];
       }
       return response()->json([
@@ -60,9 +63,11 @@ class TourController extends Controller
           'operational' => $tour->operational,
           'description' => $tour->description,
           'image' => $tour->image,
+          'panorama1' => $tour->panoramas[0]->path,
+          'panorama2' => $tour->panoramas[0]->path,
+          'panorama3' => $tour->panoramas[0]->path,
           'longitude' => $tour->longitude,
           'latitude' => $tour->latitude,
-          'panoramas' => $tour->panoramas,
           'comment' => $comments
         ]
       ], 200);
